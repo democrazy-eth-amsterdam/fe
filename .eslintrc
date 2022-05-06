@@ -17,8 +17,8 @@
     ],
     "env": {
         "es6": true,
-        "node": true,
-        "commonjs": true
+        "node": false,
+        "commonjs": false
     },
     "rules": {
         "array-bracket-spacing": [
