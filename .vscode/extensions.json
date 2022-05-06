@@ -1,0 +1,8 @@
+{
+    "recommendations": [
+        "bradlc.vscode-tailwindcss",
+        "zignd.html-css-class-completion",
+        "ecmel.vscode-html-css",
+        "dbaeumer.vscode-eslint"
+    ]
+}
