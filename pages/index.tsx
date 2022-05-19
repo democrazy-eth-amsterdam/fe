@@ -43,7 +43,7 @@ const Home: NextPage = () => {
     return (
         <WagmiProvider client={wagmiClient}>
             <RainbowKitProvider chains={chains} theme={darkTheme ? rainbowDarkTheme() : rainbowLightTheme()}>
-                <div className="flex flex-row h-screen bg-slate-200">
+                <div className="flex flex-row h-screen bg-slate-200 dark:bg-slate-600">
                     <Sidebar darkTheme={darkTheme} themeChangeHandler={handleThemeChange} />
                     <div className="border-4 border-blue-900 w-full"></div>
                 </div>

@@ -6,7 +6,7 @@ const Sidebar = ({ darkTheme, themeChangeHandler }: { darkTheme: boolean; themeC
         <div className="flex flex-col space-b space-y-20 border-4 border-red-900 w-2/12">
             <div className="flex border-4 border-black w-full h-1/6">
                 <div className="m-auto border-2 border-emerald-900">
-                    <span className="font-bold text-3xl">Democrazy</span>
+                    <span className="font-bold text-3xl select-none">Democrazy</span>
                 </div>
             </div>
             <div className="flex border-4 border-black w-full h-1/2"></div>
