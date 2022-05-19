@@ -5,8 +5,8 @@ import {
     getConnectors,
     WagmiProvider,
     RainbowKitProvider,
-    darkTheme as kDarkTheme,
-    lightTheme as kLightTheme,
+    darkTheme as rainbowDarkTheme,
+    lightTheme as rainbowLightTheme,
 } from "./utils/connectors"
 import Sidebar from "./components/sidebar"
 
@@ -42,7 +42,7 @@ const Home: NextPage = () => {
 
     return (
         <WagmiProvider client={wagmiClient}>
-            <RainbowKitProvider chains={chains} theme={darkTheme ? kDarkTheme() : kLightTheme()}>
+            <RainbowKitProvider chains={chains} theme={darkTheme ? rainbowDarkTheme() : rainbowLightTheme()}>
                 <div className="flex flex-row h-screen bg-slate-200">
                     <Sidebar darkTheme={darkTheme} themeChangeHandler={handleThemeChange} />
                     <div className="border-4 border-blue-900 w-full"></div>
