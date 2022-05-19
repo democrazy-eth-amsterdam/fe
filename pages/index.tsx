@@ -16,6 +16,12 @@ import Sidebar from "./components/sidebar"
  * which changes darkTheme state. Theme is stored in the
  * localStorage as "theme", which is either "dark" or undefined,
  * in which case it is light.
+ * 
+ * Feel free to use dark: method in tailwind. The "dark" prop is passed
+ * to components that require extra functionalities other than tailwind.
+ * Dark theme is not dependent on user color scheme preference, hence 
+ * window.matchMedia('(prefers-color-scheme: dark)').matches
+ * is redundant in theme selection.
  */
 const Home: NextPage = () => {
     const { wagmiClient, chains } = getConnectors()
