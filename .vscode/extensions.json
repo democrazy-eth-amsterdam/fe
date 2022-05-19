@@ -3,6 +3,7 @@
         "bradlc.vscode-tailwindcss",
         "zignd.html-css-class-completion",
         "ecmel.vscode-html-css",
-        "dbaeumer.vscode-eslint"
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode"
     ]
 }

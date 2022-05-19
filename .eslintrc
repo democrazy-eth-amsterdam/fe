@@ -21,10 +21,6 @@
         "commonjs": false
     },
     "rules": {
-        "array-bracket-spacing": [
-            "warn",
-            "always"
-        ],
         "camelcase": [
             "warn",
             {
