@@ -1,38 +1,44 @@
 import type { NextPage } from "next"
-import {
-    apiProvider,
-    configureChains,
-    getDefaultWallets,
-    RainbowKitProvider,
-} from "@rainbow-me/rainbowkit"
-import { chain, createClient, WagmiProvider } from "wagmi"
-import "@rainbow-me/rainbowkit/styles.css"
+import { useEffect, useState } from "react"
 
+import {
+    getConnectors,
+    WagmiProvider,
+    RainbowKitProvider,
+    darkTheme as kDarkTheme,
+    lightTheme as kLightTheme,
+} from "./utils/connectors"
 import Sidebar from "./components/sidebar"
 
+/*
+ * All theme changes are handled inside the Home component.
+ * handleThemeChange function is passed to Sidebar component,
+ * which changes darkTheme state. Theme is stored in the
+ * localStorage as "theme", which is either "dark" or undefined,
+ * in which case it is light.
+ */
 const Home: NextPage = () => {
-    const { chains, provider } = configureChains(
-        [chain.mainnet],
-        [
-            apiProvider.jsonRpc(() => {
-                return { rpcUrl: "https://mainnet.eth.aragon.network/" }
-            }),
-        ]
-    )
+    const { wagmiClient, chains } = getConnectors()
 
-    const { connectors } = getDefaultWallets({ appName: "Democazy", chains })
+    const [darkTheme, setDarkTheme] = useState(false)
 
-    const wagmiClient = createClient({
-        autoConnect: true,
-        connectors,
-        provider,
-    })
+    const handleThemeChange = () => {
+        if (localStorage.getItem("theme")) {
+            setDarkTheme(true)
+            document.documentElement.classList.add("dark")
+        } else {
+            setDarkTheme(false)
+            document.documentElement.classList.remove("dark")
+        }
+    }
+
+    useEffect(handleThemeChange, [])
 
     return (
         <WagmiProvider client={wagmiClient}>
-            <RainbowKitProvider chains={chains}>
+            <RainbowKitProvider chains={chains} theme={darkTheme ? kDarkTheme() : kLightTheme()}>
                 <div className="flex flex-row h-screen bg-slate-200">
-                    <Sidebar />
+                    <Sidebar darkTheme={darkTheme} themeChangeHandler={handleThemeChange} />
                     <div className="border-4 border-blue-900 w-full"></div>
                 </div>
             </RainbowKitProvider>

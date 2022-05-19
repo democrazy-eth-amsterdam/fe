@@ -4,6 +4,7 @@
         "zignd.html-css-class-completion",
         "ecmel.vscode-html-css",
         "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode"
+        "esbenp.prettier-vscode",
+        "Gruntfuggly.todo-tree"
     ]
 }
