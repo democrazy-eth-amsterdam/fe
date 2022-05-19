@@ -7,3 +7,5 @@
 ## Install vscode recommended extensions if you're using vscode
 
 ##  Please follow the eslint conventions
+
+## TAILWINDCSS. NO BOOTSTRAP, MATERIAL UI, ANY OTHER
