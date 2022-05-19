@@ -9,3 +9,5 @@
 ##  Please follow the eslint conventions
 
 ## TAILWINDCSS. NO BOOTSTRAP, MATERIAL UI, ANY OTHER
+
+## ALSO USE TYPESCRIPT, I BEG
