@@ -12,16 +12,19 @@ import Sidebar from "./components/sidebar"
 
 /*
  * All theme changes are handled inside the Home component.
- * handleThemeChange function is passed to Sidebar component,
- * which changes darkTheme state. Theme is stored in the
+ * Theme changes happen by a button click in the Sidebar component
+ * so handleThemeChange function is passed to the Sidebar component,
+ * which changes the `darkTheme` state. Theme is stored in the
  * localStorage as "theme", which is either "dark" or undefined,
  * in which case it is light.
  *
- * Feel free to use dark: method in tailwind. The "dark" prop is passed
- * to components that require extra functionalities other than tailwind.
- * Dark theme is not dependent on user color scheme preference, hence
+ * Feel free to use dark: method in tailwind, as handleThemeChange
+ * function updates the root element's class. The "dark" prop is passed
+ * to components that require extra functionalities other than tailwind
+ * which is stored in the `darkTheme` state (true if user prefers dark theme).
+ * Dark theme is not dependent on user's color scheme preference, hence
  * window.matchMedia('(prefers-color-scheme: dark)').matches
- * is redundant in theme selection.
+ * is redundant in theme selection and does not affect the theme.
  */
 const Home: NextPage = () => {
     const { wagmiClient, chains } = getConnectors()
@@ -38,6 +41,7 @@ const Home: NextPage = () => {
         }
     }
 
+    // On website load, detect user's theme preference.
     useEffect(handleThemeChange, [])
 
     return (
