@@ -5,8 +5,8 @@ const Sidebar = ({ darkTheme, themeChangeHandler }: { darkTheme: boolean; themeC
     return (
         <div className="flex flex-col space-b space-y-20 border-4 border-red-900 w-2/12">
             <div className="flex border-4 border-black w-full h-1/6">
-                <div className="m-auto border-2 border-emerald-900">
-                    <span className="font-bold text-3xl select-none">Democrazy</span>
+                <div className="flex m-auto rounded-full p-3 items-center justify-center border-[#C4C4C4] bg-slate-400">
+                    <Image src="/democrazy.svg" width="64" height="64" alt="Logo" />
                 </div>
             </div>
             <div className="flex border-4 border-black w-full h-1/2"></div>
