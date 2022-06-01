@@ -5,6 +5,7 @@ module.exports = {
         extend: {
             fontFamily: {
                 mosk: ["Mosk", "sans-serif"],
+                inter: ["Inter", "sans-serif"],
             },
         },
     },

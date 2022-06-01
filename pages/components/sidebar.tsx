@@ -4,7 +4,7 @@ import Link from "next/link"
 
 const Sidebar = ({ darkTheme, themeChangeHandler }: { darkTheme: boolean; themeChangeHandler: () => void }) => {
     return (
-        <div className="flex flex-col space-b space-y-20 bg-[#E1E1E1] bg-opacity-20 lg:w-[19rem] md:w-60 shadow-2xl">
+        <div className="flex flex-col space-b space-y-15 bg-[#E1E1E1] bg-opacity-20 lg:w-[19rem] md:w-60 shadow-2xl">
 
             <Link href="/">
                 <div className="flex mt-4 w-full h-1/6">

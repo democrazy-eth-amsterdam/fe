@@ -9,6 +9,7 @@ import {
     lightTheme as rainbowLightTheme,
 } from "./utils/connectors"
 import Sidebar from "./components/sidebar"
+import Daolist from "./components/daolist"
 
 
 /*
@@ -51,7 +52,9 @@ const Home: NextPage = () => {
                 <div className="h-screen bg-cover" style={{backgroundImage: "url(/background.png)" }}>
                     <div className="flex flex-row h-screen bg-black bg-opacity-20 dark:bg-opacity-70">
                         <Sidebar darkTheme={darkTheme} themeChangeHandler={handleThemeChange} />
-                        <div className="w-full"></div>
+                        <div className="w-full">
+                            <Daolist darkTheme={darkTheme} themeChangeHandler={handleThemeChange} />
+                        </div>
                     </div>
                 </div>
             </RainbowKitProvider>
