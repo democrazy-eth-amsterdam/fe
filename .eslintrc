@@ -8,13 +8,9 @@
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
-        "project": [
-            "./tsconfig.json"
-        ]
+        "project": ["./tsconfig.json"]
     },
-    "plugins": [
-        "@typescript-eslint"
-    ],
+    "plugins": ["@typescript-eslint"],
     "env": {
         "es6": true,
         "node": false,
@@ -31,20 +27,11 @@
             "warn",
             "always",
             {
-                "exceptions": [
-                    "*"
-                ],
-                "markers": [
-                    "/",
-                    "#region",
-                    "#endregion"
-                ]
+                "exceptions": ["*"],
+                "markers": ["/", "#region", "#endregion"]
             }
         ],
-        "quotes": [
-            "warn",
-            "double"
-        ],
+        "quotes": ["warn", "double"],
         "arrow-spacing": "warn",
         "comma-spacing": [
             "warn",
@@ -53,22 +40,10 @@
                 "after": true
             }
         ],
-        "complexity": [
-            "warn",
-            10
-        ],
-        "arrow-parens": [
-            "warn",
-            "as-needed"
-        ],
+        "complexity": ["warn", 10],
+        "arrow-parens": ["warn", "as-needed"],
         "arrow-body-style": "off",
-        "semi": [
-            "warn",
-            "never"
-        ],
-        "indent": [
-            "warn",
-            4
-        ]
+        "semi": ["warn", "never"],
+        "indent": ["warn", 4, { "SwitchCase": -4 }]
     }
 }

@@ -5,18 +5,17 @@ import Link from "next/link"
 const Sidebar = ({ darkTheme, themeChangeHandler }: { darkTheme: boolean; themeChangeHandler: () => void }) => {
     return (
         <div className="flex flex-col space-b space-y-15 bg-[#E1E1E1] bg-opacity-20 lg:w-[19rem] md:w-60 shadow-2xl">
-
             <Link href="/">
                 <div className="flex mt-4 w-full h-1/6">
                     <div className="flex m-auto rounded-full p-5 items-center justify-center border-[#C4C4C4] bg-white bg-opacity-10 hover:shadow-lg duration-150 cursor-pointer">
-                        <Image src="/democrazy.svg" width="70" height="70" alt="Logo" />
+                        <a href="#">
+                            <Image src="/democrazy.svg" width="70" height="70" alt="Logo" />
+                        </a>
                     </div>
                 </div>
             </Link>
 
-            <div className="flex w-full h-1/2">
-
-            </div>
+            <div className="flex w-full h-1/2"></div>
 
             <div className="flex flex-col w-full h-1/6 mt-auto">
                 <div className="flex flex-row m-auto space-x-2">

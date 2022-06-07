@@ -7,10 +7,9 @@ import {
     RainbowKitProvider,
     darkTheme as rainbowDarkTheme,
     lightTheme as rainbowLightTheme,
-} from "./utils/connectors"
+} from "../utils/connectors"
 import Sidebar from "./components/sidebar"
 import Daolist from "./components/daolist"
-
 
 /*
  * All theme changes are handled inside the Home component.
@@ -49,11 +48,11 @@ const Home: NextPage = () => {
     return (
         <WagmiProvider client={wagmiClient}>
             <RainbowKitProvider chains={chains} theme={darkTheme ? rainbowDarkTheme() : rainbowLightTheme()}>
-                <div className="h-screen bg-cover" style={{backgroundImage: "url(/background.png)" }}>
+                <div className="h-screen bg-cover" style={{ backgroundImage: "url(/background.png)" }}>
                     <div className="flex flex-row h-screen bg-black bg-opacity-20 dark:bg-opacity-70">
                         <Sidebar darkTheme={darkTheme} themeChangeHandler={handleThemeChange} />
                         <div className="w-full">
-                            <Daolist darkTheme={darkTheme} themeChangeHandler={handleThemeChange} />
+                            <Daolist />
                         </div>
                     </div>
                 </div>
