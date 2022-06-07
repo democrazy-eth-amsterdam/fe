@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Button from "./button"
 
 const Daocard = ({ name, memberCount, logo }: { name: string; memberCount: number; logo: string }) => {
     return (
@@ -10,13 +11,9 @@ const Daocard = ({ name, memberCount, logo }: { name: string; memberCount: numbe
                 <Image src={logo} alt="Dao Image" width="110" height="110" className="rounded-full" />
             </div>
             <p className="font-inter text-md font-black mt-0.5">{name}</p>
+            {/* TODO: Localize member count */}
             <p className="font-inter text-xs font-extralight">{memberCount} members</p>
-            <button
-                className="rounded-full border-2 font-inter text-sm border-white px-11 py-[8px] mt-3 
-            hover:bg-white hover:text-black duration-150"
-            >
-                View
-            </button>
+            <Button text={"View"} onClick={() => {}} />
         </div>
     )
 }

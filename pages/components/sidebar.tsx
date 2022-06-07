@@ -1,8 +1,15 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit"
+import { useState } from "react"
+
 import Image from "next/image"
 import Link from "next/link"
 
+import Button from "./button"
+import CreateDaoModal from "./createDaoModal"
+
 const Sidebar = ({ darkTheme, themeChangeHandler }: { darkTheme: boolean; themeChangeHandler: () => void }) => {
+    const [showCreateDaoModal, setShowCreateDaoModal] = useState(false)
+
     return (
         <div className="flex flex-col space-b space-y-15 bg-[#E1E1E1] bg-opacity-20 lg:w-[19rem] md:w-60 shadow-2xl">
             <Link href="/">
@@ -17,29 +24,35 @@ const Sidebar = ({ darkTheme, themeChangeHandler }: { darkTheme: boolean; themeC
 
             <div className="flex w-full h-1/2"></div>
 
-            <div className="flex flex-col w-full h-1/6 mt-auto">
-                <div className="flex flex-row m-auto space-x-2">
-                    <Image
-                        src={darkTheme ? "/moon.svg" : "/sun.svg"}
-                        width="28"
-                        height="28"
-                        alt="Switch Theme"
-                        onClick={() => {
-                            if (localStorage.getItem("theme")) {
-                                localStorage.removeItem("theme")
-                                themeChangeHandler()
-                            } else {
-                                localStorage.setItem("theme", "dark")
-                                themeChangeHandler()
-                            }
-                        }}
-                        className="hover:scale-105 duration-300 cursor-pointer"
-                    />
-                    {/* TODO: BUG IN SUN IMAGE RENDER, OVERLAPS WTH WALLET BOX */}
-                    {/* Uicons by <a href="https://www.flaticon.com/uicons">Flaticon</a> */}
-                    <ConnectButton showBalance={false} accountStatus={{ smallScreen: "address" }} />
+            <div className="flex flex-col flex-1 w-full h-1/6 mt-auto p-4">
+                <div className="flex flex-col flex-1 w-full justify-center">
+                    <div className="h-1/6" />
+                    <div className="flex flex-row m-auto">
+                        <Button text={"Create a Dao"} onClick={() => setShowCreateDaoModal(true)} />
+                    </div>
+                    <div className="flex flex-row m-auto space-x-2">
+                        <Image
+                            src={darkTheme ? "/moon.svg" : "/sun.svg"}
+                            width="28"
+                            height="28"
+                            alt="Switch Theme"
+                            onClick={() => {
+                                if (localStorage.getItem("theme")) {
+                                    localStorage.removeItem("theme")
+                                    themeChangeHandler()
+                                } else {
+                                    localStorage.setItem("theme", "dark")
+                                    themeChangeHandler()
+                                }
+                            }}
+                            className="hover:scale-105 duration-300 cursor-pointer"
+                        />
+                        {/* Uicons by <a href="https://www.flaticon.com/uicons">Flaticon</a> */}
+                        <ConnectButton showBalance={false} accountStatus={{ smallScreen: "address" }} />
+                    </div>
                 </div>
             </div>
+            {showCreateDaoModal ? <CreateDaoModal /> : <></>}
         </div>
     )
 }
