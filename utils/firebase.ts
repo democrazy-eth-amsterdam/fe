@@ -1,6 +1,6 @@
+import { Dao } from "./types"
 import { initializeApp } from "firebase/app"
 import { getFirestore, collection, getDocs } from "firebase/firestore"
-import { Dao } from "./types"
 
 const firebaseConfig = {
     apiKey: "AIzaSyClOhCmQqtIHXgIB0k1HnWd0b5TlLh8kAw",
