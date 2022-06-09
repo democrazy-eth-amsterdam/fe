@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app"
-import { getFirestore, collection, getDoc, getDocs } from "firebase/firestore"
+import { getFirestore, collection, getDocs } from "firebase/firestore"
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage"
 import { Dao } from "./types"
 
 const firebaseConfig = {
@@ -12,7 +13,12 @@ const firebaseConfig = {
 }
 
 const db = getFirestore(initializeApp(firebaseConfig))
+const storage = getStorage()
 
 export const getDaos = async (): Promise<Dao[]> => {
     return (await getDocs(collection(db, "daos"))).docs.map(doc => doc.data()) as Dao[]
+}
+
+export const daoExists = async (daoID: string): Promise<boolean> => {
+    return (await getDocs(collection(db, "daos"))).docs.map(doc => doc.id).includes(daoID)
 }

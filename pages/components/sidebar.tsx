@@ -52,7 +52,7 @@ const Sidebar = ({ darkTheme, themeChangeHandler }: { darkTheme: boolean; themeC
                     </div>
                 </div>
             </div>
-            {showCreateDaoModal ? <CreateDaoModal /> : <></>}
+            {showCreateDaoModal ? <CreateDaoModal closeHandler={() => setShowCreateDaoModal(false)}/> : <></>}
         </div>
     )
 }

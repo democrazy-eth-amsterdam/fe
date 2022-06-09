@@ -1,8 +1,3 @@
-export type createAPIRequest = {
-    type: "list" | "proposals"
-    params: string
-}
-
 export type Dao = {
     name: string
     memberCount: number
