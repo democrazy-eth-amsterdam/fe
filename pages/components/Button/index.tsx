@@ -1,4 +1,9 @@
-const Button = ({ text, onClick }: { text: string; onClick: () => void }) => {
+interface ButtonProps {
+    text: string
+    onClick?: () => void
+}
+
+const Button = ({ text, onClick = () => {} }: ButtonProps) => {
     return (
         <button
             className="rounded-full border-2 font-inter text-sm border-white px-11 py-[8px] mt-3 

@@ -8,25 +8,10 @@ import {
     darkTheme as rainbowDarkTheme,
     lightTheme as rainbowLightTheme,
 } from "../utils/connectors"
-import Sidebar from "./components/sidebar"
-import Daolist from "./components/daolist"
 
-/*
- * All theme changes are handled inside the Home component.
- * Theme changes happen by a button click in the Sidebar component
- * so handleThemeChange function is passed to the Sidebar component,
- * which changes the `darkTheme` state. Theme is stored in the
- * localStorage as "theme", which is either "dark" or undefined,
- * in which case it is light.
- *
- * Feel free to use dark: method in tailwind, as handleThemeChange
- * function updates the root element's class. The "dark" prop is passed
- * to components that require extra functionalities other than tailwind
- * which is stored in the `darkTheme` state (true if user prefers dark theme).
- * Dark theme is not dependent on user's color scheme preference, hence
- * window.matchMedia('(prefers-color-scheme: dark)').matches
- * is redundant in theme selection and does not affect the theme.
- */
+import Sidebar from "./components/Sidebar"
+import Daolist from "./components/Daolist"
+
 const Home: NextPage = () => {
     const { wagmiClient, chains } = getConnectors()
 
@@ -42,7 +27,6 @@ const Home: NextPage = () => {
         }
     }
 
-    // On website load, detect user's theme preference.
     useEffect(handleThemeChange, [])
 
     return (

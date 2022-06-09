@@ -1,9 +1,11 @@
-import { useRef, useState } from "react"
 import TypewriterComponent from "typewriter-effect"
 
-import Button from "./button"
-import { daoExists } from "../../utils/firebase"
-import Daocard from "./daocard"
+import { useRef, useState } from "react"
+
+import Daocard from "../DaoCard"
+import Button from "../Button"
+
+import { daoExists } from "../../../utils/firebase"
 
 const INFO_1 =
     "Democrazy enables privacy-preserving off-chain governance voting through the use of zero knowledge proofs and homomorphic encryption. \
@@ -20,7 +22,7 @@ const INFO_4 = "Before getting started, you have to fill in a few details about 
 
 const INFO_5 = "This is your DAO card. You may not change this later."
 
-const CreateDaoModal = ({ closeHandler }: { closeHandler: () => void }) => {
+const CreateDao = ({ closeHandler }: { closeHandler: () => void }) => {
     const [titleDone, setTitleDone] = useState(false)
     const [showInputs, setShowInputs] = useState(false)
     const [tokenError, setTokenError] = useState("")
@@ -240,9 +242,7 @@ const CreateDaoModal = ({ closeHandler }: { closeHandler: () => void }) => {
                                         <span className="font-bold">Accepted file types: SVG, PNG, JPG</span>
                                     </div>
                                 </div>
-                                <div className="flex h-full w-full flex-col space-y-4 border-4 p-4">
-                                    
-                                </div>
+                                <div className="flex h-full w-full flex-col space-y-4 border-4 p-4"></div>
                             </div>
                             <div className="flex flex-row space-x-4 pb-6">
                                 <Button text={"Take me back!"} onClick={closeHandler} />
@@ -286,4 +286,4 @@ const CreateDaoModal = ({ closeHandler }: { closeHandler: () => void }) => {
     )
 }
 
-export default CreateDaoModal
+export default CreateDao

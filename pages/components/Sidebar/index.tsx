@@ -1,13 +1,18 @@
+import Link from "next/link"
+import Image from "next/image"
+
 import { ConnectButton } from "@rainbow-me/rainbowkit"
 import { useState } from "react"
 
-import Image from "next/image"
-import Link from "next/link"
+import Button from "../Button"
+import CreateDao from "../CreateDao"
 
-import Button from "./button"
-import CreateDaoModal from "./createDaoModal"
+interface SidebarProps {
+    darkTheme: boolean
+    themeChangeHandler: () => void
+}
 
-const Sidebar = ({ darkTheme, themeChangeHandler }: { darkTheme: boolean; themeChangeHandler: () => void }) => {
+const Sidebar = ({ darkTheme, themeChangeHandler }: SidebarProps) => {
     const [showCreateDaoModal, setShowCreateDaoModal] = useState(false)
 
     return (
@@ -16,7 +21,7 @@ const Sidebar = ({ darkTheme, themeChangeHandler }: { darkTheme: boolean; themeC
                 <div className="flex mt-4 w-full h-1/6">
                     <div className="flex m-auto rounded-full p-5 items-center justify-center border-[#C4C4C4] bg-white bg-opacity-10 hover:shadow-lg duration-150 cursor-pointer">
                         <a href="#">
-                            <Image src="/democrazy.svg" width="70" height="70" alt="Logo" />
+                            <Image src="/democrazy.svg" width="70" height="70" alt="Logo" priority={true} />
                         </a>
                     </div>
                 </div>
@@ -52,7 +57,7 @@ const Sidebar = ({ darkTheme, themeChangeHandler }: { darkTheme: boolean; themeC
                     </div>
                 </div>
             </div>
-            {showCreateDaoModal ? <CreateDaoModal closeHandler={() => setShowCreateDaoModal(false)}/> : <></>}
+            {showCreateDaoModal ? <CreateDao closeHandler={() => setShowCreateDaoModal(false)} /> : <></>}
         </div>
     )
 }

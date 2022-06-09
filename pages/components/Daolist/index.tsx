@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
-import Daocard from "./daocard"
-import type { Dao } from "../../utils/types"
-import { getDaos } from "../../utils/firebase"
+
+import Daocard from "../DaoCard"
+import { getDaos } from "../../../utils/firebase"
+import type { Dao } from "../../../utils/types"
 
 const Daolist = () => {
     const [daos, setDaos] = useState<Dao[]>([])
@@ -9,6 +10,8 @@ const Daolist = () => {
     useEffect(() => {
         getDaos().then(daos => setDaos(daos))
     }, [])
+
+    let key = 0
 
     return (
         <div className="flex flex-col items-center w-full h-full space-y-7 overflow-auto">
@@ -27,16 +30,17 @@ const Daolist = () => {
                         [[]] as Dao[][]
                     )
                     .map((da: Dao[], idx: number) => {
+                        key += 2
                         return !da ? (
                             <></>
                         ) : (
-                            <div className="flex space-x-8" key={idx}>
+                            <div className="flex space-x-8" key={idx * key}>
                                 {da[0] ? (
                                     <Daocard
                                         name={da[0].name}
                                         memberCount={da[0].memberCount}
                                         logo={da[0].logo}
-                                        key={idx}
+                                        key={idx * key + 1}
                                     />
                                 ) : (
                                     <></>
@@ -46,7 +50,7 @@ const Daolist = () => {
                                         name={da[1].name}
                                         memberCount={da[1].memberCount}
                                         logo={da[1].logo}
-                                        key={idx}
+                                        key={idx * key + 2}
                                     />
                                 ) : (
                                     <></>
@@ -56,7 +60,7 @@ const Daolist = () => {
                                         name={da[2].name}
                                         memberCount={da[2].memberCount}
                                         logo={da[2].logo}
-                                        key={idx}
+                                        key={idx * key + 3}
                                     />
                                 ) : (
                                     <></>
@@ -66,7 +70,7 @@ const Daolist = () => {
                                         name={da[3].name}
                                         memberCount={da[3].memberCount}
                                         logo={da[3].logo}
-                                        key={idx}
+                                        key={idx * key + 4}
                                     />
                                 ) : (
                                     <></>

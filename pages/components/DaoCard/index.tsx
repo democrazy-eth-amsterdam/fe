@@ -1,17 +1,15 @@
 import Image from "next/image"
-import Button from "./button"
 
-const Daocard = ({
-    name,
-    memberCount,
-    logo,
-    preview,
-}: {
+import Button from "../Button"
+
+interface DaoCardProps {
     name: string
     memberCount: number
     logo: string
-    preview: boolean
-}) => {
+    preview?: boolean
+}
+
+const DaoCard = ({ name, memberCount, logo, preview = false }: DaoCardProps) => {
     return (
         <div
             className={[
@@ -46,4 +44,4 @@ const Daocard = ({
     )
 }
 
-export default Daocard
+export default DaoCard

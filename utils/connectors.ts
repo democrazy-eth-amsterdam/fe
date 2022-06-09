@@ -1,3 +1,6 @@
+import "@rainbow-me/rainbowkit/styles.css"
+
+import { chain, createClient, WagmiProvider } from "wagmi"
 import {
     apiProvider,
     configureChains,
@@ -6,15 +9,13 @@ import {
     darkTheme,
     lightTheme,
 } from "@rainbow-me/rainbowkit"
-import { chain, createClient, WagmiProvider } from "wagmi"
-import "@rainbow-me/rainbowkit/styles.css"
 
 const getConnectors = () => {
     const { chains, provider } = configureChains(
         [chain.mainnet],
         [
             apiProvider.jsonRpc(() => {
-                return { rpcUrl: "https://mainnet.eth.aragon.network/" }
+                return { rpcUrl: "https://rpc.ankr.com/eth" }
             }),
         ]
     )
