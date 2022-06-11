@@ -1,8 +1,9 @@
 import { useState } from "react"
 
 import StepOne from "./step-one"
+import StepTwo from "./step-two"
 
-import DaoInputs from "./DaoInputs"
+import type { DaoInputs, TokenMetadata } from "./dao-types"
 
 interface CreateDaoProps {
     closeHandler: () => void
@@ -12,7 +13,13 @@ const emptyDaoInputs = {
     apiKey: "",
     name: "",
     logo: "",
-    tokenAddress: {},
+    tokenMetadata: {
+        ethereum: "",
+        optimism: "",
+        arbitrum: "",
+        polygon: "",
+        gnosis: "",
+    },
 }
 
 // Step 1 => Enter API Key
@@ -30,6 +37,17 @@ const CreateDao = ({ closeHandler }: CreateDaoProps) => {
                         closeHandler={closeHandler}
                         setApiKey={(key: string) => setDaoInputs({ ...daoInputs, apiKey: key })}
                         setStep={setStep}
+                    />
+                )
+            case 2:
+                return (
+                    <StepTwo
+                        closeHandler={closeHandler}
+                        setDaoName={(name: string) => setDaoInputs({ ...daoInputs, name: name })}
+                        setDaoLogo={(logo: string) => setDaoInputs({ ...daoInputs, logo: logo })}
+                        setTokenMetadata={(metadata: TokenMetadata) =>
+                            setDaoInputs({ ...daoInputs, tokenMetadata: metadata })
+                        }
                     />
                 )
         }
