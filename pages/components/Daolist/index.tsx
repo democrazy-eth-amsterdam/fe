@@ -1,8 +1,9 @@
 import { ReactElement, useEffect, useState } from "react"
 
-import Daocard from "../DaoCard"
 import { getDaos } from "../../../utils/firebase"
 import type { Dao } from "../../../utils/types"
+
+import Daocard from "../DaoCard"
 
 const Daolist = () => {
     const [daos, setDaos] = useState<Dao[][]>([])
