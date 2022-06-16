@@ -99,11 +99,11 @@ const StepTwo = ({ closeHandler, setDaoInputs, setStep }: StepTwoProps) => {
 
         if (
             !(
-                ethRef.current.value != "" ||
-                optiRef.current.value != "" ||
-                arbiRef.current.value != "" ||
-                polyRef.current.value != "" ||
-                gnoRef.current.value != ""
+                ethRef.current.value !== "" ||
+                optiRef.current.value !== "" ||
+                arbiRef.current.value !== "" ||
+                polyRef.current.value !== "" ||
+                gnoRef.current.value !== ""
             )
         ) {
             setAddressError({ ...addressError, ethereum: "You must enter a token address on at least one chain." })
