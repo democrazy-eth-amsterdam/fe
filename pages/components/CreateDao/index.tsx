@@ -28,7 +28,7 @@ const emptyDaoInputs = {
 // Step 3 => Verify DAO Details
 
 const CreateDao = ({ closeHandler }: CreateDaoProps) => {
-    const [step, setStep] = useState<number>(2)
+    const [step, setStep] = useState<number>(1)
     const [daoInputs, setDaoInputs] = useState<DaoInputs>(emptyDaoInputs)
 
     const getCurrentStep = () => {
