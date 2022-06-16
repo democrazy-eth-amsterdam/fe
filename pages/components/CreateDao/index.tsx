@@ -2,6 +2,7 @@ import { useState } from "react"
 
 import StepOne from "./step-one"
 import StepTwo from "./step-two"
+import StepThree from "./step-three"
 
 import type { DaoInputs, TokenMetadata } from "./dao-types"
 
@@ -44,14 +45,14 @@ const CreateDao = ({ closeHandler }: CreateDaoProps) => {
                 return (
                     <StepTwo
                         closeHandler={closeHandler}
-                        setDaoName={(name: string) => setDaoInputs({ ...daoInputs, name: name })}
-                        setDaoLogo={(logo: string) => setDaoInputs({ ...daoInputs, logo: logo })}
-                        setTokenMetadata={(metadata: TokenMetadata) =>
-                            setDaoInputs({ ...daoInputs, tokenMetadata: metadata })
+                        setDaoInputs={(name: string, logo: string, metadata: TokenMetadata) =>
+                            setDaoInputs({ ...daoInputs, name, logo, tokenMetadata: metadata })
                         }
                         setStep={setStep}
                     />
                 )
+            case 3:
+                return <StepThree setStep={setStep} daoInputs={daoInputs} />
         }
     }
 

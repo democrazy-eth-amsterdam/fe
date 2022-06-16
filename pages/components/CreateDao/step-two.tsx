@@ -10,9 +10,7 @@ import type { TokenMetadata } from "./dao-types"
 
 interface StepTwoProps {
     closeHandler: () => void
-    setDaoName: (name: string) => void
-    setDaoLogo: (logo: string) => void
-    setTokenMetadata: (metadata: TokenMetadata) => void
+    setDaoInputs: (name: string, logo: string, metadata: TokenMetadata) => void
     setStep: (step: number) => void
 }
 
@@ -34,7 +32,7 @@ const emptyAddressError = {
 
 type Ref = React.MutableRefObject<HTMLInputElement>
 
-const StepTwo = ({ closeHandler, setDaoName, setDaoLogo, setTokenMetadata, setStep }: StepTwoProps) => {
+const StepTwo = ({ closeHandler, setDaoInputs, setStep }: StepTwoProps) => {
     const [titleTyped, setTitleTyped] = useState<boolean>(false)
     const [showInputs, setShowInputs] = useState<boolean>(false)
     const [daoNameError, setDaoNameError] = useState<string>("")
@@ -128,9 +126,7 @@ const StepTwo = ({ closeHandler, setDaoName, setDaoLogo, setTokenMetadata, setSt
             }
             const reader = new FileReader()
             reader.onload = event => {
-                setDaoName(daoNameRef.current.value)
-                setDaoLogo(event.target?.result as string)
-                setTokenMetadata({
+                setDaoInputs(daoNameRef.current.value, event.target?.result as string, {
                     ethereum: ethRef.current.value,
                     optimism: optiRef.current.value,
                     arbitrum: arbiRef.current.value,
@@ -161,7 +157,7 @@ const StepTwo = ({ closeHandler, setDaoName, setDaoLogo, setTokenMetadata, setSt
                     />
                 )}
             </h1>
-            <p className="text-lg font-mosk">
+            <span className="text-lg font-mosk">
                 <TypewriterComponent
                     onInit={typewriter =>
                         typewriter
@@ -172,7 +168,7 @@ const StepTwo = ({ closeHandler, setDaoName, setDaoLogo, setTokenMetadata, setSt
                             .start()
                     }
                 />
-            </p>
+            </span>
             {showInputs ? (
                 <div className="flex flex-col space-y-6 h-full w-full justify-evenly">
                     <div className="flex space-x-4 justify-evenly">
@@ -189,7 +185,7 @@ const StepTwo = ({ closeHandler, setDaoName, setDaoLogo, setTokenMetadata, setSt
                                     daoNameRef.current.style.textDecoration = "none"
                                 }}
                             />
-                            <p className="text-red-200 text-sm">{daoNameError}</p>
+                            <span className="text-red-200 text-sm">{daoNameError}</span>
                         </div>
                         <div className="flex w-full flex-col justify-evenly">
                             <label>Upload DAO Logo</label>
@@ -199,7 +195,7 @@ const StepTwo = ({ closeHandler, setDaoName, setDaoLogo, setTokenMetadata, setSt
                                 accept="image/*"
                                 ref={logoRef}
                             />
-                            <p className="text-red-200 text-sm">{logoError}</p>
+                            <span className="text-red-200 text-sm">{logoError}</span>
                         </div>
                     </div>
                     <div className="flex flex-col h-full justify-evenly">
@@ -217,7 +213,7 @@ const StepTwo = ({ closeHandler, setDaoName, setDaoLogo, setTokenMetadata, setSt
                                         ethRef.current.style.textDecoration = "none"
                                     }}
                                 />
-                                <p className="flex items-center text-red-200 text-sm">{addressError.ethereum}</p>
+                                <span className="flex items-center text-red-200 text-sm">{addressError.ethereum}</span>
                             </div>
                         </div>
                         <div className="flex scale-90 origin-left">
@@ -234,7 +230,7 @@ const StepTwo = ({ closeHandler, setDaoName, setDaoLogo, setTokenMetadata, setSt
                                         optiRef.current.style.textDecoration = "none"
                                     }}
                                 />
-                                <p className="flex items-center text-red-200 text-sm">{addressError.optimism}</p>
+                                <span className="flex items-center text-red-200 text-sm">{addressError.optimism}</span>
                             </div>
                         </div>
                         <div className="flex scale-90 origin-left">
@@ -254,7 +250,7 @@ const StepTwo = ({ closeHandler, setDaoName, setDaoLogo, setTokenMetadata, setSt
                                         arbiRef.current.style.textDecoration = "none"
                                     }}
                                 />
-                                <p className="flex items-center text-red-200 text-sm">{addressError.arbitrum}</p>
+                                <span className="flex items-center text-red-200 text-sm">{addressError.arbitrum}</span>
                             </div>
                         </div>
                         <div className="flex scale-90 origin-left">
@@ -275,7 +271,7 @@ const StepTwo = ({ closeHandler, setDaoName, setDaoLogo, setTokenMetadata, setSt
                                         polyRef.current.style.textDecoration = "none"
                                     }}
                                 />
-                                <p className="flex items-center text-red-200 text-sm">{addressError.polygon}</p>
+                                <span className="flex items-center text-red-200 text-sm">{addressError.polygon}</span>
                             </div>
                         </div>
                         <div className="flex scale-90 origin-left">
@@ -299,7 +295,7 @@ const StepTwo = ({ closeHandler, setDaoName, setDaoLogo, setTokenMetadata, setSt
                                         gnoRef.current.style.textDecoration = "none"
                                     }}
                                 />
-                                <p className="flex items-center text-red-200 text-sm">{addressError.gnosis}</p>
+                                <span className="flex items-center text-red-200 text-sm">{addressError.gnosis}</span>
                             </div>
                         </div>
                     </div>
