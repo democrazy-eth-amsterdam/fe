@@ -9,6 +9,13 @@ interface DaoCardProps {
     preview?: boolean
 }
 
+const formatNumber = (number: number): string => {
+    return Intl.NumberFormat("en-US", {
+        notation: "compact",
+        maximumFractionDigits: 1,
+    }).format(number)
+}
+
 const DaoCard = ({ name, memberCount, logo, preview = false }: DaoCardProps) => {
     return (
         <div
@@ -32,7 +39,7 @@ const DaoCard = ({ name, memberCount, logo, preview = false }: DaoCardProps) => 
             </div>
             <p className="font-inter text-md font-black mt-0.5">{name}</p>
             {/* TODO: Localize member count */}
-            <p className="font-inter text-xs font-extralight">{memberCount} members</p>
+            <p className="font-inter text-xs font-extralight">{formatNumber(memberCount)} members</p>
             {preview ? (
                 <div className="rounded-full border-2 font-inter text-sm border-white px-11 py-[8px] mt-3 text-white select-none">
                     View
