@@ -24,9 +24,10 @@ const emptyDaoInputs = {
 
 // Step 1 => Enter API Key
 // Step 2 => Enter DAO Details
+// Step 3 => Verify DAO Details
 
 const CreateDao = ({ closeHandler }: CreateDaoProps) => {
-    const [step, setStep] = useState<number>(1)
+    const [step, setStep] = useState<number>(2)
     const [daoInputs, setDaoInputs] = useState<DaoInputs>(emptyDaoInputs)
 
     const getCurrentStep = () => {
@@ -48,6 +49,7 @@ const CreateDao = ({ closeHandler }: CreateDaoProps) => {
                         setTokenMetadata={(metadata: TokenMetadata) =>
                             setDaoInputs({ ...daoInputs, tokenMetadata: metadata })
                         }
+                        setStep={setStep}
                     />
                 )
         }
